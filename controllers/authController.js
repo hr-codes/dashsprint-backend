@@ -22,7 +22,7 @@ const authController = {
         if (result) {
           const id = user._id;
 
-          const token = jwt.sign({ id }, process.env.MYDATE_SECRET, {
+          const token = jwt.sign({ id }, process.env.APP_SECRET, {
             expiresIn: 3000 // expires in 50min
           });
 

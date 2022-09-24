@@ -16,9 +16,9 @@ app.use(express.json())
 
 app.use('/api', routes);
 
-const DB_NAME = process.env.MYDATE_DB_NAME;
-const DB_USER = process.env.MYDATE_DB_USER;
-const DB_PASSWORD = encodeURIComponent(process.env.MYDATE_DB_PASSWORD);
+const DB_NAME = process.env.APP_DB_NAME;
+const DB_USER = process.env.APP_DB_USER;
+const DB_PASSWORD = encodeURIComponent(process.env.APP_DB_PASSWORD);
 
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.awb7g7h.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
   .then(() => {
