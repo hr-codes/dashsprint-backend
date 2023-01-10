@@ -1,14 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
+const db = require('./src/config/db.js')
 
 const app = express();
 
-const routes = require('./routes/routes')
+const routes = require('./src/routes/routes')
 
 app.use(bodyParser.json());
 
@@ -16,14 +12,6 @@ app.use(express.json())
 
 app.use('/api', routes);
 
-const DB_NAME = process.env.APP_DB_NAME;
-const DB_USER = process.env.APP_DB_USER;
-const DB_PASSWORD = encodeURIComponent(process.env.APP_DB_PASSWORD);
+app.listen(process.env.APP_PORT, () => console.log(`====== APP LOG: app started on port: ${process.env.APP_PORT}`))
 
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.awb7g7h.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
-  .then(() => {
-    console.log('db connected successfully')
-
-    app.listen(3000)
-  })
-  .catch((err) => console.log('error on connect db', err))
+db.sync(() => console.log('====== APP LOG: db connected'));

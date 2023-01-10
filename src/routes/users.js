@@ -1,4 +1,4 @@
-const usersController = require('../controllers/usersController')
+const usersController = require('../controllers/users')
 
 const routes = {
   post: async (req, res) => usersController.post(req, res),

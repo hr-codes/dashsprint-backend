@@ -1,4 +1,4 @@
-const authController = require('../controllers/authController');
+const authController = require('../controllers/auth');
 
 const routes = {
   signIn: async (req, res) => authController.signIn(req, res),

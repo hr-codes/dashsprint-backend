@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 
 router.route('/users')
   .get(middlewareAuth, users.getAll)
-  .post(middlewareAuth, users.post)
+  .post(users.post)
 
 router.route('/users/:id')
   .patch(middlewareAuth, users.patch)
@@ -34,6 +34,6 @@ router.route('/auth/sign-up')
   .post(users.post)
 
 router.route('/auth/logout')
-  .post(auth.logout)
+  .get(middlewareAuth, auth.logout)
 
 module.exports =  router;
