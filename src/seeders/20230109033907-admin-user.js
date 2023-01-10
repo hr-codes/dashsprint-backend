@@ -7,7 +7,7 @@ module.exports = {
       firstName: 'Hector',
       lastName: 'Rodrigues',
       email: 'hectorrsa@outlook.com',
-      password: "123456789",
+      password: "U2FsdGVkX18nQXIY7mRWKqGkC9CYTi6ETwfINrGlANg=",
       status: 1,
       createdAt: new Date(),
       updatedAt: new Date()
