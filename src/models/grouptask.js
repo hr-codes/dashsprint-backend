@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       GroupTask.belongsTo(models.Board)
+
       models.Board.hasMany(GroupTask)
     }
   }
   GroupTask.init({
     name: DataTypes.STRING,
     color: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
+    status: DataTypes.INTEGER,
     boardId: DataTypes.INTEGER
   }, {
     sequelize,

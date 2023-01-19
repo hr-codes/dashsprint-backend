@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     assignedTo: DataTypes.INTEGER,
     groupTaskId: DataTypes.INTEGER,
     isActive: DataTypes.BOOLEAN,
-    status: DataTypes.BOOLEAN
+    status: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Task',

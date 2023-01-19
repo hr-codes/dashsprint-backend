@@ -18,7 +18,7 @@ services:
     build: .
     command: sh -c "npm install -g nodemon && npm install && npm start"
     ports:
-      - '8000:8000'
+      - '3001:3001'
     volumes:
       - .:/usr/app
       - .:/usr/src/app/node_modules

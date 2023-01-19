@@ -11,7 +11,7 @@ const authController = {
       const user = await Models.User.findOne({ where: { email: email } })
 
       if (!user) {
-        res.status(422).json({
+        res.status(400).json({
           data: {},
           message: 'user not found',
         });
@@ -30,7 +30,7 @@ const authController = {
 
         return res.status(200).json({ auth: true, token: token });
       } else {
-        res.status(422).json({
+        res.status(400).json({
           data: {},
           message: 'user is not valid',
         });
