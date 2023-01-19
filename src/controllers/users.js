@@ -3,17 +3,17 @@ const CryptoJS = require("crypto-js");
 
 const usersController = {
   post: async (req, res) => {
-    const { first_name, last_name, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
-    if (!first_name && !last_name && !email && !password) {
+    if (!firstName && !lastName && !email && !password) {
       res.status(400).json({ message: 'required fields not passed.' })
 
       return;
     }
 
     const data = {
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       email,
       password
     };
