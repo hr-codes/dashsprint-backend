@@ -1,19 +1,36 @@
-const express = require('express');
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const db = require('./src/config/db.js')
+const routes = require('./src/routes/routes')
 
 const app = express();
 
-const routes = require('./src/routes/routes')
-
 app.use(cors())
+
 app.use(bodyParser.json());
 
 app.use(express.json())
 
 app.use('/api', routes);
 
-app.listen(process.env.APP_PORT, () => console.log(`====== APP LOG: app started on port: ${process.env.APP_PORT}`))
+const httpServer = createServer(app);
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+require('./src/services/socket')(io)
+
+httpServer.listen(process.env.APP_PORT, () => {
+  console.log(`Example app listening on port ${process.env.APP_PORT}`);
+});
+
 
 db.sync(() => console.log('====== APP LOG: db connected'));

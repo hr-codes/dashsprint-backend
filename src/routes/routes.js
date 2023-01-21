@@ -3,9 +3,6 @@ const router = express.Router();
 
 const users = require('./users');
 const auth = require('./auth');
-const boards = require('./boards');
-const groupTasks = require('./group_tasks');
-const tasks = require('./tasks');
 
 const middlewareAuth = require('../middlewares/Authentication')
 
@@ -38,36 +35,5 @@ router.route('/auth/sign-up')
 
 router.route('/auth/logout')
   .get(middlewareAuth, auth.logout)
-
-router.route('/boards')
-  .get(middlewareAuth, boards.getAll)
-  .post(middlewareAuth, boards.post)
-
-
-router.route('/boards/:id')
-  .patch(middlewareAuth, boards.patch)
-  .get(middlewareAuth, boards.get)
-  .delete(middlewareAuth, boards.delete)
-
-router.route('/group_tasks')
-  .get(middlewareAuth, groupTasks.getAll)
-  .post(middlewareAuth, groupTasks.post)
-
-
-router.route('/group_tasks/:id')
-  .patch(middlewareAuth, groupTasks.patch)
-  .get(middlewareAuth, groupTasks.get)
-  .delete(middlewareAuth, groupTasks.delete)
-
-
-router.route('/tasks')
-  .get(middlewareAuth, tasks.getAll)
-  .post(middlewareAuth, tasks.post)
-
-
-router.route('/tasks/:id')
-  .patch(middlewareAuth, tasks.patch)
-  .get(middlewareAuth, tasks.get)
-  .delete(middlewareAuth, tasks.delete)
 
 module.exports =  router;

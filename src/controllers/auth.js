@@ -25,7 +25,7 @@ const authController = {
 
       if (password === data) {
         const token = jwt.sign({ id: user.id }, process.env.APP_SECRET, {
-          expiresIn: 3000 // expires in 50min
+          expiresIn: 3002 // expires in 50min
         });
 
         return res.status(200).json({ auth: true, token: token });
