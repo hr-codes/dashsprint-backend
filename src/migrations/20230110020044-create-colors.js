@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('GroupTasks', {
+    await queryInterface.createTable('Colors', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,14 +12,8 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      colorId: {
-        type: Sequelize.INTEGER
-      },
-      status: {
-        type: Sequelize.INTEGER
-      },
-      boardId: {
-        type: Sequelize.INTEGER,
+      value: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('GroupTasks');
+    await queryInterface.dropTable('Colors');
   }
 };

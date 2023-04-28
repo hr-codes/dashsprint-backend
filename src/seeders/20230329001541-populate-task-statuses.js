@@ -3,18 +3,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('GroupTasks', [{
-      name: 'Primeiro grupo de tarefas',
-      colorId: 2,
-      status: 1,
-      boardId: 1,
+    return queryInterface.bulkInsert('TaskStatuses', [{
+      name: '',
+      colorId: 90,
       createdAt: new Date(),
       updatedAt: new Date()
-    }
-  ]);
+    }]);
   },
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('GroupTasks', null, {});
+    return queryInterface.bulkDelete('TaskStatuses', null, {});
   }
 };

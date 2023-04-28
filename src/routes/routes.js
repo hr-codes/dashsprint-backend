@@ -3,6 +3,11 @@ const router = express.Router();
 
 const users = require('./users');
 const auth = require('./auth');
+const taskStatuses = require('./taskStatuses');
+const colors = require('./colors');
+const boards = require('./boards');
+const groupTasks = require('./groupTasks');
+const tasks = require('./tasks');
 
 const middlewareAuth = require('../middlewares/Authentication')
 
@@ -35,5 +40,26 @@ router.route('/auth/sign-up')
 
 router.route('/auth/logout')
   .get(middlewareAuth, auth.logout)
+
+router.route('/task_statuses')
+  .get(middlewareAuth, taskStatuses.getAll)
+  .post(taskStatuses.post)
+
+router.route('/task_statuses/:id')
+  .patch(middlewareAuth, taskStatuses.patch)
+  .get(middlewareAuth, taskStatuses.get)
+  .delete(middlewareAuth, taskStatuses.delete)
+
+router.route('/colors')
+  .get(middlewareAuth, colors.getAll)
+
+router.route('/boards')
+  .get(middlewareAuth, boards.getAll)
+
+router.route('/group_tasks')
+  .get(middlewareAuth, groupTasks.getAll)
+
+router.route('/tasks')
+  .get(middlewareAuth, tasks.getAll)
 
 module.exports =  router;

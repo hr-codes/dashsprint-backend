@@ -3,18 +3,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    queryInterface.addConstraint('Boards', {
-      fields: ['status'],
+    queryInterface.addConstraint('GroupTasks', {
+      fields: ['colorId'],
       type: 'foreign key',
-      name: 'board_status_association',
+      name: 'group_tasks_colors_association',
       references: {
-        table: 'BoardStatuses',
+        table: 'Colors',
         field: 'id'
       }
     })
   },
 
   async down(queryInterface, Sequelize) {
-    queryInterface.removeConstraint('Boards', 'board_status_association')
+    queryInterface.removeConstraint('GroupTasks', 'group_tasks_colors_association')
   }
 };
